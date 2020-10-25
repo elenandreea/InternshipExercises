@@ -1,4 +1,11 @@
 <resources>
+    <string name="buttonA">Restaurants</string>
     <string name="app_name">InternshipExercises</string>
     <string name="label_increment">Number of clicks!</string>
+    <string name="restaurant_title">Restaurant title</string>
+    <string name="restaurant_subtitle">Text Text Text Text Text Text Text Text Text Text Text Text</string>
+    <string name="icon_content_desc">Description</string>
+    <string name="bottom">Bottom</string>
+    <string name="invisible">Invisible</string>
+    <string name="floating">Floating</string>
 </resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/list_item_icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:padding="@dimen/padding_16"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/icon_content_desc"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/list_item_title"
+        android:layout_toEndOf="@+id/list_item_icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:paddingStart="@dimen/padding_16"
+        android:paddingTop="@dimen/padding_16"
+        android:paddingEnd="@dimen/padding_16"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/restaurant_title" />
+
+    <TextView
+        android:layout_below="@+id/list_item_title"
+        android:layout_toEndOf="@+id/list_item_icon"
+        android:id="@+id/list_item_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        tools:text="@tools:sample/lorem/random"
+        android:paddingStart="@dimen/padding_16"
+        android:paddingEnd="@dimen/padding_16"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:alpha="0.6" />
+</RelativeLayout>

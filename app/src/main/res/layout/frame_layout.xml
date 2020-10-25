@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp" android:layout_height="100dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grey">
+
+    <ImageView
+        android:id="@+id/restaurant_details_image"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_gravity="center"
+        tools:src="@tools:sample/avatars" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Dummy text"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"/>
+</FrameLayout>
