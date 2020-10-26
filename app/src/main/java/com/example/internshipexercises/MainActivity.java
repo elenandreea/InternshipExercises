@@ -1,50 +1,40 @@
 package com.example.internshipexercises;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.internshipexercises.Utils.DownloaderUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-
-public class MainActivity extends AppCompatActivity {
-
-    ImageView imageView;
-    Runnable downloadRunnable = new DownloadRunnable();
-
-    class DownloadRunnable implements Runnable{
-
-        @Override
-        public void run() {
-            Bitmap bitmap = DownloaderUtil.INSTANCE.downloadImage();
-            runOnUiThread(() -> imageView.setImageBitmap(bitmap));
-        }
-    }
-
-    private void downloadImageUsingExecutor() {
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
-        executorService.submit(downloadRunnable);
-    }
-
-    private void downloadImageUsingThread(){
-        new Thread(() -> {
-            final Bitmap bitmap = DownloaderUtil.INSTANCE.downloadImage();
-            runOnUiThread(() -> imageView.setImageBitmap(bitmap));
-        }).start();
-    }
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imageView = findViewById(R.id.image_view);
-//        downloadImageUsingThread();
-        downloadImageUsingExecutor();
+
+        MapView mapView = findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
+
+        mapView.getMapAsync(this);
+
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng coord = new LatLng(46.7676919, 23.5709693);
+        googleMap.addMarker(new MarkerOptions().position(coord));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coord,16));
+
+        googleMap.addMarker(new MarkerOptions().position(coord).title("Porto").snippet("Welcome to Porto, Portugal!"));
+
+    }
 }
