@@ -1,6 +1,8 @@
 package com.example.internshipexercises;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setToolbar();
+        usePreferences();
     }
 
     private void setToolbar() {
@@ -57,5 +60,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void usePreferences(){
+        SharedPreferences preferences = getSharedPreferences("choices", MainActivity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("chosenColor", "RED");
+        editor.putInt("chosenNumber", 7);
+        //async
+        editor.apply();
+        //sync
+//        editor.commit();
+
+        String color = preferences.getString("chosenColor", "BLACK");
+        int number = preferences.getInt("chosenNumber", 0);
+
+        Log.d("MainActivity", "color:" + color + " number:" + number);
     }
 }
